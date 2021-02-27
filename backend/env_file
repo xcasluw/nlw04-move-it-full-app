@@ -1,3 +1,3 @@
 module.exports = {
-    authSecret: '1c5442c0461e5186126aaba26edd6857',
+    authSecret: '',
 }

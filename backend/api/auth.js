@@ -40,6 +40,9 @@ module.exports = (app) => {
         name: user.name,
         email: user.email,
         admin: user.admin,
+        level: user.level,
+        currentExperience: user.current_experience,
+        challengesCompleted: user.challenges_completed,
         iat: now,
         exp: now + 60 * 60 * 24 * 3,
       };
