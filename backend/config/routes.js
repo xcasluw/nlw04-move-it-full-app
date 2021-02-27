@@ -53,4 +53,16 @@ module.exports = (app) => {
     .all(app.config.passport.authenticate())
     .put(app.api.user.changeInfos)
 
+
+  // CHALLENGES
+  app
+    .route("/challenges")
+    .all(app.config.passport.authenticate())
+    .get(admin(app.api.challenge.get));
+
+  app
+    .route("/challenges/:id")
+    .all(app.config.passport.authenticate())
+    .get(app.api.challenge.getById);
+
 };
