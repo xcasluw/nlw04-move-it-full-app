@@ -41,5 +41,45 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 -   [Yup](https://www.npmjs.com/package/yup)
 -   [Nodemailer](https://nodemailer.com/about/)
 -   [date-fns](https://date-fns.org/)
+-   [mysql2](https://www.npmjs.com/package/mysql2)
 
 ## :information_source: Como usar
+
+O projeto utiliza banco SQL, e durante o desenvolvimento, foi utilizado o XAMPP com usuário padrão (root) e senha vazia
+
+### Instalar API
+```bash
+# Clone o reposótirio
+$ git clone https://github.com/xcasluw/nlw04-move-it-full-app
+
+# Entre no repositório backend
+$ cd nlw04-move-it-full-app/backend
+
+# Instale as dependências
+$ npm install
+
+# Crie uma base de dados chamada moveitapp e configure o arquivo knexfile.js
+$ connection: { database: "moveitapp", user: "root", password: "", },
+
+# Rode as migrations para criação das tabelas
+$ knex migrate:latest
+
+# Rode a API
+$ npm run serve
+```
+
+### Instalar Front
+```bash
+
+# Navegue até a pasta do front
+$ cd nlw04-move-it-full-app/frontend-react
+
+# Instale as dependências com o yarn
+$ yarn install
+
+# Rode o frontend
+$ yarn start
+```
+
+
+Desenvolvido com ♥ por Lucas Genari :wave: [Get in touch!](https://www.linkedin.com/in/xcasluw/)
