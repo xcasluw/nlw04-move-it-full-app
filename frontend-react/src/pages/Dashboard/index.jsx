@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, AnimationContainer, Header } from "./styles";
 import { useAuth } from "../../hooks/auth";
+import ExperienceBar from "../../components/ExperienceBar";
 
 const Dashboard = () => {
   const { signOut, user } = useAuth();
@@ -8,10 +9,8 @@ const Dashboard = () => {
   return (
     <Container>
       <AnimationContainer>
-        <Header>
-          <h1>Olá {user.name}</h1>
-          <button type="button" onClick={signOut}>Sair</button>
-        </Header>
+
+        <ExperienceBar />
 
       </AnimationContainer>
     </Container>
