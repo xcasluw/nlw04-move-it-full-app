@@ -45,7 +45,7 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 
 ## :information_source: Como usar
 
-O projeto utiliza banco SQL, e durante o desenvolvimento, foi utilizado o XAMPP com usuário padrão (root) e senha vazia
+O projeto utiliza banco de dados SQL, e durante o desenvolvimento, foi utilizado o XAMPP com usuário padrão (root) e senha vazia. Obs: backend utiliza NPM, frontend utiliza Yarn
 
 ### Instalar API
 ```bash
