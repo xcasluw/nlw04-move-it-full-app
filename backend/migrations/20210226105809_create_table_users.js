@@ -8,7 +8,7 @@ exports.up = function (knex, Promise) {
     table.string("reset_password");
     table.boolean("admin").notNull().defaultTo(false);
     table.boolean("active").notNull().defaultTo(true);
-    table.integer("level").notNull().defaultTo(0);
+    table.integer("level").notNull().defaultTo(1);
     table.integer("current_experience").notNull().defaultTo(0);
     table.integer("challenges_completed").notNull().defaultTo(0);
     table.string("last_login");

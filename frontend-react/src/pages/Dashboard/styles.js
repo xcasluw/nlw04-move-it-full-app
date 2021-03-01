@@ -1,14 +1,5 @@
 import styled, { keyframes } from "styled-components";
 
-export const Container = styled.div`
-  height: 100vh;
-  max-width: 992px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-`;
-
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
@@ -23,6 +14,17 @@ const appearFromLeft = keyframes`
 
 export const AnimationContainer = styled.div`
   animation: ${appearFromLeft} 1s;
+  display: flex;
+`;
+
+export const Container = styled.div`
+  height: 100vh;
+  flex: 1;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Header = styled.header`
