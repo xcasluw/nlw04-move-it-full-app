@@ -1,24 +1,24 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { ChallengesContext } from "../../hooks/challenges";
-import { ModalContainer } from "./styles";
-import { FiTrash } from "react-icons/fi";
+import { ContainerSlideEnter } from "./styles";
+import CloseButtonImg from "../../assets/icons/close.svg";
 
 const LevelUpModal = () => {
   const { level, closeLevelUpModal } = useContext(ChallengesContext);
 
   return (
-    <ModalContainer>
-      <div>
+    <ContainerSlideEnter>
+      <div className="container">
         <header>{level}</header>
 
         <strong>Parabéns</strong>
         <p>Você alcançou um novo level</p>
 
         <button type="button" onClick={closeLevelUpModal}>
-          <FiTrash />
+          <img src={CloseButtonImg} alt="Fechar modal" />
         </button>
       </div>
-    </ModalContainer>
+    </ContainerSlideEnter>
   )
 }
 

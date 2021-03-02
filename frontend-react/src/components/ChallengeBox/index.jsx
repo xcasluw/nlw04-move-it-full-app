@@ -25,7 +25,7 @@ const ChallengeBox = () => {
           <header>Ganhe {activeChallenge.amount} xp</header>
 
           <main>
-            <img src={`icons/${activeChallenge.type}.svg`} />
+            <img src={`icons/${activeChallenge.type}.svg`} alt="Tipo Desafio" />
             <strong>Novo desafio</strong>
             <p>{activeChallenge.description}</p>
           </main>
@@ -53,10 +53,9 @@ const ChallengeBox = () => {
             <strong>Finalize um ciclo para receber um desafio</strong>
             <p>
               <img src={levelUpImg} alt="Level Up" />
-          Avance de level completando desafios
-        </p>
+              Avance de level completando desafios
+            </p>
           </div>
-
         )}
     </ChallengeBoxContainer>
   )

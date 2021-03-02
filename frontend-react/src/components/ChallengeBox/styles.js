@@ -1,4 +1,27 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 0.25;
+    transform: scale(0.25);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.50); 
+  }
+  75% {
+    opacity: 0.75;
+    transform: scale(0.75); 
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); 
+  }
+`;
 
 export const ChallengeBoxContainer = styled.div`
     height: 100%;
@@ -32,6 +55,10 @@ export const ChallengeBoxContainer = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+
+    .challengeActive main img {
+      animation: ${fadeIn} .4s ease;
     }
 
     .challengeActive main strong {
