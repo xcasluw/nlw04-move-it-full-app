@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/auth";
 import Aside from "../../components/Aside";
 import ExperienceBar from "../../components/ExperienceBar";
 import Countdown from "../../components/Countdown";
+import Profile from "../../components/Profile";
 
 const Dashboard = () => {
   const { signOut, user } = useAuth();
@@ -15,6 +16,7 @@ const Dashboard = () => {
         <ExperienceBar />
         <section>
           <div>
+            <Profile />
             <Countdown />
           </div>
           <div>
