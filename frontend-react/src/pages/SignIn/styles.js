@@ -56,30 +56,34 @@ export const AnimationContainer = styled.div`
 
   img {
 
-    margin-bottom: 60px;
-
     @media (min-width: 1801px) {
       width: 300px;
+      margin-bottom: 60px;
     }
 
     @media (max-width: 1800px) {
       width: 300px;
+      margin-bottom: 50px;
     }
 
     @media (max-width: 1600px) {
       width: 300px;
+      margin-bottom: 40px;
     }
 
     @media (max-width: 1200px) {
       width: 300px;
+      margin-bottom: 30px;
     }    
     
     @media (max-width: 900px) {
       width: 300px;
+      margin-bottom: 30px;
     }
 
     @media (max-width: 600px) {
       width: 300px;
+      margin-bottom: 30px;
     }
     
   }

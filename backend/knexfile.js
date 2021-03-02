@@ -1,9 +1,11 @@
+const { myDB, userDB, passDB } = require("./.env");
+
 module.exports = {
   client: "mysql2",
   connection: {
-    database: "moveitapp",
-    user: "root",
-    password: "",
+    database: myDB,
+    user: userDB,
+    password: passDB,
   },
   pool: {
     min: 2,

@@ -56,30 +56,34 @@ export const AnimationContainer = styled.div`
 
   img {
 
-    margin-bottom: 60px;
-
     @media (min-width: 1801px) {
       width: 300px;
+      margin-bottom: 60px;
     }
 
     @media (max-width: 1800px) {
       width: 300px;
+      margin-bottom: 50px;
     }
 
     @media (max-width: 1600px) {
       width: 300px;
+      margin-bottom: 20px;
     }
 
     @media (max-width: 1200px) {
       width: 300px;
+      margin-bottom: 20px;
     }    
     
     @media (max-width: 900px) {
       width: 300px;
+      margin-bottom: 20px;
     }
 
     @media (max-width: 600px) {
       width: 300px;
+      margin-bottom: 20px;
     }
     
   }
@@ -89,15 +93,61 @@ export const AnimationContainer = styled.div`
     width: 100%;
 
     > span {
-      font-size: 30px;
       color: #fff;
+
+      @media (min-width: 1801px) {
+        font-size: 30px;
+      }
+
+      @media (max-width: 1800px) {
+        font-size: 30px;
+      }
+
+      @media (max-width: 1600px) {
+        font-size: 25px;
+      }
+
+      @media (max-width: 1200px) {
+        font-size: 20px;
+      }    
+      
+      @media (max-width: 900px) {
+        font-size: 20px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 20px;
+      }
     }
 
     div {
 
-      margin: 20px 0;
       display: flex;
       align-items: center;
+
+      @media (min-width: 1801px) {
+        margin: 20px 0;
+      }
+
+      @media (max-width: 1800px) {
+        margin: 20px 0;
+      }
+
+      @media (max-width: 1600px) {
+        margin: 15px 0;
+      }
+
+      @media (max-width: 1200px) {
+        margin: 15px 0;
+      }    
+      
+      @media (max-width: 900px) {
+        margin: 15px 0;
+      }
+
+      @media (max-width: 600px) {
+        margin: 5px 0;
+      }
       
       svg {
         font-size: 30px;

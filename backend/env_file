@@ -1,3 +1,6 @@
 module.exports = {
-    authSecret: ''
+    authSecret: '',
+    myDB: 'moveitapp',
+    userDB: 'root',
+    passDB: ''
 }
