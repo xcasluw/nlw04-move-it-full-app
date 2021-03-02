@@ -4,12 +4,12 @@ import logoImg from "../../assets/logo.svg";
 import { FiHome, FiAward, FiLogOut } from "react-icons/fi";
 import { useAuth } from "../../hooks/auth";
 
-const Aside = () => {
+const Aside = ({ props, ...rest }) => {
 
   const { signOut } = useAuth();
 
   return (
-    <AsideContainer>
+    <AsideContainer {...rest}>
       <img src={logoImg} alt="Logo" />
 
       <div>

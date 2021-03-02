@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { shade } from "polished";
 
 export const AsideContainer = styled.aside`
   background-color: #fff;
   height: 100vh;
-  width: 85px;
+  width: 130px;
 
   display: flex;
   justify-content: center;
@@ -14,6 +15,7 @@ export const AsideContainer = styled.aside`
   img {
     position: absolute;
     top: 10px;
+    width: 50px;
   }
 
   div {
@@ -25,28 +27,35 @@ export const AsideContainer = styled.aside`
 
     svg {
       cursor: pointer;
-      font-size: 25px;
+      font-size: 34px;
       margin: 20px 0;
+
+      &:nth-child(1) {
+        ${(props) => props.page === "dashboard" && css`color: #535ED0;`}
+      }
+
+      &:nth-child(2) {
+        ${(props) => props.page === "dashboard" && css`color: #666666;`}
+      }
     }
   }
 
   button {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     border: 0;
     outline: 0;
     background: transparent;
-    transition: scale, background-color .2s;
+    transition: all .3s;
 
     svg {
-      font-size: 24px;
+      font-size: 34px;
       color: #4cd62b;
     }
 
     &:hover {
       transform: scale(1.08);
-      border-radius: 50%;
-      background-color: #f2f3f5;
+      color: ${shade(0.1, "#4cd62b")};
     }
   }
 
