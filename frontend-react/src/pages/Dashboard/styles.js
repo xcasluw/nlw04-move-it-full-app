@@ -19,11 +19,12 @@ export const AnimationContainer = styled.div`
 
 export const Container = styled.div`
   height: 100vh;
-  max-width: 992px;
+  max-width: 1020px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   section {
     flex: 1;

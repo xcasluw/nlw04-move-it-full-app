@@ -32,12 +32,12 @@ export function CountdownProvider({ children }) {
       countdownTimeout = setTimeout(() => {
         setTime(time - 1);
       }, 1000)
-    } else if (isActive && time == 0) {
+    } else if (isActive && time === 0) {
       setHasFinished(true);
       setIsActive(false);
       startNewChallenge();
     }
-  }, [isActive, time]);
+  }, [isActive, time, startNewChallenge]);
 
   return (
     <CountdownContext.Provider value={{ minutes, seconds, hasFinished, isActive, startCountdown, resetCountdown }}>
