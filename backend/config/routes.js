@@ -65,4 +65,18 @@ module.exports = (app) => {
     .all(app.config.passport.authenticate())
     .get(app.api.challenge.getById);
 
+
+  // User Exp
+
+  app
+    .route("/user-exp")
+    .all(app.config.passport.authenticate())
+    .get(app.api.user.getExp);
+
+  app
+    .route("/increase-exp")
+    .all(app.config.passport.authenticate())
+    .put(app.api.user.increaseExp);
+
+
 };

@@ -1,19 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import LevelUpModal from "../components/LevelUpModal";
 import api from "../services/api";
 import { useAuth } from "./auth";
+import { useToast } from "./toast";
 
 export const ChallengesContext = createContext({});
 
 export function ChallengesProvider({ children }) {
 
-  const { user } = useAuth();
   const [challenges, setChallenges] = useState([]);
   const [level, setLevel] = useState(1);
   const [currentExperience, setCurrentExperience] = useState(0);
   const [challengesCompleted, setChallengesCompleted] = useState(0);
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+  const { addToast } = useToast();
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -30,23 +31,23 @@ export function ChallengesProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    if (user) {
-      setLevel(user.level);
-      setCurrentExperience(user.currentExperience);
-      setChallengesCompleted(user.challengesCompleted);
-    }
-  }, [user]);
+    api.get("user-exp").then((res) => {
+      setLevel(res.data.level);
+      setCurrentExperience(res.data.current_experience);
+      setChallengesCompleted(res.data.challenges_completed);
+    });
+  }, []);
 
-  function levelUp() {
+  const levelUp = useCallback(() => {
     setLevel(level + 1);
     setIsLevelUpModalOpen(true);
-  }
+  }, [level]);
 
-  function closeLevelUpModal() {
+  const closeLevelUpModal = useCallback(() => {
     setIsLevelUpModalOpen(false);
-  }
+  }, []);
 
-  function startNewChallenge() {
+  const startNewChallenge = useCallback(() => {
     const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
     const challenge = challenges[randomChallengeIndex];
 
@@ -59,30 +60,61 @@ export function ChallengesProvider({ children }) {
       });
       new Audio('/notification.mp3').play();
     }
-  }
+  }, [challenges]);
 
-  function resetChallenge() {
+  const resetChallenge = useCallback(() => {
     setActiveChallenge(null);
-  }
+  }, []);
 
-  function completeChallenge() {
-    if (!activeChallenge) {
-      return;
-    }
+  const completeChallenge = useCallback(
+    async () => {
 
-    const { amount } = activeChallenge;
+      if (!activeChallenge) {
+        return;
+      }
 
-    let finalExperience = currentExperience + amount;
+      const { amount } = activeChallenge;
 
-    if (finalExperience >= experienceToNextLevel) {
-      finalExperience = finalExperience - experienceToNextLevel;
-      levelUp();
-    }
+      let finalExperience = currentExperience + amount;
+      let levelDB = level;
+      let willUp = false;
 
-    setCurrentExperience(finalExperience);
-    setActiveChallenge(null);
-    setChallengesCompleted(challengesCompleted + 1);
-  }
+      if (finalExperience >= experienceToNextLevel) {
+        finalExperience = finalExperience - experienceToNextLevel;
+        levelDB = levelDB + 1;
+
+        // Variável de controle para não abrir o modal de levelup caso o usuário fosse upar e a requisição para a api falhar
+        willUp = true;
+      }
+
+      const userData = {
+        level: levelDB,
+        current_experience: finalExperience,
+        challenges_completed: challengesCompleted + 1
+      }
+
+      await api
+        .put("/increase-exp", userData)
+        .then((res) => {
+
+        })
+        .catch((err) => {
+          addToast({
+            type: "error",
+            title: "Houve um erro",
+            description: "Houve um erro ao tentar armazenar suas informações"
+          });
+          return;
+        });
+
+      if (willUp) {
+        levelUp();
+      }
+
+      setCurrentExperience(finalExperience);
+      setActiveChallenge(null);
+      setChallengesCompleted(challengesCompleted + 1);
+    }, [activeChallenge, challengesCompleted, currentExperience, experienceToNextLevel, addToast, level, levelUp]);
 
   return (
     <ChallengesContext.Provider value={{ level, currentExperience, challengesCompleted, levelUp, startNewChallenge, activeChallenge, resetChallenge, experienceToNextLevel, completeChallenge, closeLevelUpModal }}>

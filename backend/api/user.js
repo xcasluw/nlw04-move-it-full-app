@@ -375,5 +375,55 @@ module.exports = (app) => {
     }
   };
 
-  return { save, get, getById, removeUser, changeInfos, changeImage };
+  const increaseExp = async (req, res) => {
+
+    const infos = req.body;
+
+    try {
+
+      const userExists = await app
+        .database("users")
+        .where({ id: req.user.id })
+        .first();
+
+      if (userExists) {
+        app
+          .database("users")
+          .update(infos)
+          .where({ id: req.user.id })
+          .then((_) => res.status(204).send())
+          .catch((err) => res.status(500).send(err));
+      }
+
+
+    } catch (error) {
+
+      const jsonErr = JSON.stringify(error);
+      const jsonUser = JSON.stringify("INCREASE XP");
+      const errException = {
+        description: `${jsonErr} - ${jsonUser}`
+      };
+      app
+        .database("exceptions")
+        .insert(errException)
+        .then((_) => res.status(400).json({ msg: "Erro de servidor. Erro ao tentar atualizar informações de xp do usuário" }))
+        .catch((err) => res.status(500).json({ msg: "Erro de servidor. Erro ao tentar atualizar informações de xp do usuário" }));
+      return;
+    }
+
+  }
+
+  const getExp = async (req, res) => {
+
+    const infoExp = await app
+      .database("users")
+      .select("current_experience", "challenges_completed", "level")
+      .where({ id: req.user.id })
+      .first()
+
+    return res.json(infoExp);
+
+  }
+
+  return { save, get, getById, removeUser, changeInfos, changeImage, increaseExp, getExp };
 };
