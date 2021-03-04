@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState, useCallback } from "react";
 import LevelUpModal from "../components/LevelUpModal";
 import api from "../services/api";
-import { useAuth } from "./auth";
 import { useToast } from "./toast";
 
 export const ChallengesContext = createContext({});

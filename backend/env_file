@@ -1,6 +1,17 @@
 module.exports = {
     authSecret: '',
+
+    // DB
     myDB: 'moveitapp',
     userDB: 'root',
-    passDB: ''
+    passDB: '',
+
+    // Email
+    mailHost: "",
+    mailPort: 2525,
+    mailAuth: {
+        user: "",
+        pass: "",
+    },
+    mailFrom: "",
 }

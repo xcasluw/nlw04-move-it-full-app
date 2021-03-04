@@ -1,9 +1,11 @@
+const { mailHost, mailPort, mailAuth, mailFrom } = require("../.env");
+
 module.exports = {
-  mailHost: "smtp.mailtrap.io",
-  mailPort: 2525,
+  mailHost: mailHost,
+  mailPort: mailPort,
   mailAuth: {
-    user: "a869c90aa1fa13",
-    pass: "68fc8c7f7b5c6b",
+    user: mailAuth.user,
+    pass: mailAuth.pass,
   },
-  mailFrom: "61cd846ae1-bbcda5@inbox.mailtrap.io",
+  mailFrom: mailFrom,
 };
