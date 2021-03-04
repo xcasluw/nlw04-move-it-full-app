@@ -6,7 +6,9 @@
   Aplicação criada reutilizando o app Move It que foi desenvolvido durante o NLW04 (trilha React), evento realizado pela Rocketseat e ministrado por Diego Fernandes.
 </h4>
 
-![App Screenshot](https://github.com/xcasluw/nlw04-move-it-full-app/blob/master/moveit.JPG)
+![App Screenshot](https://github.com/xcasluw/nlw04-move-it-full-app/blob/master/screen1.png)
+![App Screenshot](https://github.com/xcasluw/nlw04-move-it-full-app/blob/master/screen2.png)
+![App Screenshot](https://github.com/xcasluw/nlw04-move-it-full-app/blob/master/screen3.png)
 
 ## :rocket: Tecnologias/Libs
 
