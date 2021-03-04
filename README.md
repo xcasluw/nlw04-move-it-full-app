@@ -58,8 +58,9 @@ $ cd nlw04-move-it-full-app/backend
 # Instale as dependências
 $ npm install
 
-# Crie uma base de dados chamada moveitapp e configure o arquivo knexfile.js
-$ connection: { database: "moveitapp", user: "root", password: "", },
+# Crie uma base de dados chamada moveitapp, um arquivo .env e configure o arquivo .env a partir do arquivo de exemplo env_file.txt
+
+# Para funcionamento de envio de emails, é necessário a configuração do seu host de email no arquivo .env. Você pode utilizar como teste o Mailtrap.io por exemplo
 
 # Rode as migrations para criação das tabelas
 $ knex migrate:latest

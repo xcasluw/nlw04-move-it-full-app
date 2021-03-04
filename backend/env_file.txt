@@ -1,5 +1,5 @@
 module.exports = {
-    authSecret: '',
+    authSecret: 'xxxxxxxxxxx',
 
     // DB
     myDB: 'moveitapp',
