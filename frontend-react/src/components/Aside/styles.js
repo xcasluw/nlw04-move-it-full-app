@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { shade } from "polished";
 
 export const AsideContainer = styled.aside`
-  background-color: #fff;
+   background-image: linear-gradient(45.34deg, #edeef0 5.66%, #ffffff 44.35%);
   height: 100vh;
-  width: 130px;
+  width: 110px;
 
   display: flex;
   justify-content: center;
@@ -25,19 +25,16 @@ export const AsideContainer = styled.aside`
     align-items: center;
     flex-direction: column;
 
-    svg {
-      cursor: pointer;
-      font-size: 34px;
-      margin: 20px 0;
+    a {
 
-      &:nth-child(1) {
-        ${(props) => props.page === "dashboard" && css`color: #535ED0;`}
+      svg {
+        cursor: pointer;
+        font-size: 34px;
+        margin: 20px 0;
       }
 
-      &:nth-child(2) {
-        ${(props) => props.page === "dashboard" && css`color: #666666;`}
-      }
     }
+
   }
 
   button {
