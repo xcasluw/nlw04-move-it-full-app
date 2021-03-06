@@ -43,10 +43,8 @@ const SignIn = () => {
         password: data.password,
       });
 
-      setTimeout(() => {
-        setLoading(false);
-        history.push("/dashboard");
-      }, 2000);
+      setLoading(false);
+      history.push("/dashboard");
 
     } catch (err) {
 

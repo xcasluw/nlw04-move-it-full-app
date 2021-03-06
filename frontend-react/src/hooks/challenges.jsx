@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useCallback } from "react";
+import { createContext, useEffect, useState, useCallback, useContext } from "react";
 import LevelUpModal from "../components/LevelUpModal";
 import api from "../services/api";
 import { useToast } from "./toast";
@@ -30,6 +30,14 @@ export function ChallengesProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    api.get("user-exp").then((res) => {
+      setLevel(res.data.level);
+      setCurrentExperience(res.data.current_experience);
+      setChallengesCompleted(res.data.challenges_completed);
+    });
+  }, []);
+
+  const userExp = useCallback(() => {
     api.get("user-exp").then((res) => {
       setLevel(res.data.level);
       setCurrentExperience(res.data.current_experience);
@@ -116,11 +124,21 @@ export function ChallengesProvider({ children }) {
     }, [activeChallenge, challengesCompleted, currentExperience, experienceToNextLevel, addToast, level, levelUp]);
 
   return (
-    <ChallengesContext.Provider value={{ level, currentExperience, challengesCompleted, levelUp, startNewChallenge, activeChallenge, resetChallenge, experienceToNextLevel, completeChallenge, closeLevelUpModal }}>
+    <ChallengesContext.Provider value={{ level, currentExperience, challengesCompleted, levelUp, startNewChallenge, activeChallenge, resetChallenge, experienceToNextLevel, completeChallenge, closeLevelUpModal, userExp }}>
       {children}
 
       {isLevelUpModalOpen && <LevelUpModal />}
 
     </ChallengesContext.Provider>
   )
+};
+
+export function useChallenges() {
+  const context = useContext(ChallengesContext);
+
+  if (!context) {
+    throw new Error("useAuth deve ser usado por dentro de um ChallengesProvider");
+  }
+
+  return context;
 }

@@ -26,11 +26,42 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
 
-  section {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6.25rem;
-    align-content: center;
+  table {
+
+    width: 100%;
+    display: table;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    border-radius: 10px;
+    border-collapse: collapse;
+
+    th {
+
+      vertical-align: middle; 
+      text-align: left;
+      color: #ACADAE;
+      padding: 1.5rem 0;
+
+    }
+
+    tr {
+
+      transition: background-color 0.2s;
+
+      td {
+        height: 96px;
+        background: #ffffff;
+        padding: 0.5rem 2rem;
+        
+        white-space: nowrap;
+        vertical-align: middle;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        color: #ccc;
+        font-size: 14px;
+      }
+    }
+
   }
+
 `;
